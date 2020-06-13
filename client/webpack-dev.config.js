@@ -12,6 +12,7 @@ const configs = addBaseConfig({
   mode: "development",
   output: {
     filename: "js/[name].js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -51,6 +52,8 @@ const configs = addBaseConfig({
       aggregateTimeout: 300,
       poll: 1000,
     },
+    historyApiFallback: true,
+    hot: true,
   },
 });
 

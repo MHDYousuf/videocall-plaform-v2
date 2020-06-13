@@ -79,7 +79,7 @@ const Login = ({ history }) => {
           // value={password}
           type="password"
           label="Enter password"
-          style={{ marginBottom: 5 }}
+          style={{ marginBottom: 5, color: "white" }}
         />
         <button
           onClick={() => signInWithGoogle()}
@@ -110,6 +110,7 @@ const Login = ({ history }) => {
 const useStyles = makeStyles((theme) => ({
   heading: {
     margin: theme.spacing(3),
+    color: "#000",
   },
   formContainer: {
     display: "flex",
@@ -117,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 300,
   },
   mainContainer: {
-    minHeight: "inherit",
+    minHeight: "100vh",
   },
   googleBtn: {
     display: "inherit",

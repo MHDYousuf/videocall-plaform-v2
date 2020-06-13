@@ -58,9 +58,8 @@
     "yarn": "1.22.0"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nguymin4/react-videocall.git"
+    "type": "git"
   },
-  "author": "Minh Son Nguyen",
+  "author": "MHDYousuf & Muzam_il",
   "license": "MIT"
 }

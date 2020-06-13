@@ -13,6 +13,8 @@ import { withRouter, Link } from "react-router-dom";
 import { Grid, Typography, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import app, { db } from "../config/firestore";
+
+import * as firebase from "firebase/app";
 // import auth from "../../services/auth";
 
 // eslint-disable-next-line no-unused-expressions
@@ -72,7 +74,27 @@ const Register = ({ history }) => {
     }
   }, []);
 
-  const handleGoogleLogin = () => {};
+  const handleGoogleLogin = useCallback(async () => {
+    try {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      await firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(function (result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          // ...
+          console.log(user);
+          history.push("/profile");
+          return user;
+        });
+    } catch (err) {
+      alert(err);
+      console.log(err);
+    }
+  }, []);
 
   return (
     <Grid

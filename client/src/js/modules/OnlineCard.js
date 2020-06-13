@@ -9,7 +9,7 @@
 /* eslint-disable quotes */
 import React, { useEffect, useState, useContext } from "react";
 import { Paper, Grid, Avatar, IconButton } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import firebase from "firebase";
 import { Call, Block } from "@material-ui/icons";
 import { AuthContext } from "../services/auth";
@@ -17,20 +17,25 @@ import { AuthContext } from "../services/auth";
 // eslint-disable-next-line no-unused-expressions
 ("use strict");
 
-function OnlineCard() {
+// eslint-disable-next-line react/prop-types
+function OnlineCard({ startCall }) {
   const [users, setUsers] = useState({});
+  const [friendID, setFriendID] = useState(null);
 
   const { currentUser } = useContext(AuthContext);
   const { email } = currentUser;
 
-  function handleCall(e) {
-    e.preventDefault();
-    // eslint-disable-next-line no-use-before-define
-    history.push(`${url}/call`);
-  }
+  /**
+   * Start the call with or without video
+   * @param {Boolean} video
+   */
+  const callWithVideo = (video) => {
+    const config = { audio: true, video };
+    return () => friendID && startCall(true, friendID, config);
+  };
 
-  const url = "/profile";
-  const history = useHistory();
+  // const url = "/profile";
+  // const history = useHistory();
 
   useEffect(() => {
     let subscribe = true;
@@ -95,7 +100,12 @@ function OnlineCard() {
                 </div>
                 <div style={{ padding: 5 }}>
                   {item.state === "online" ? (
-                    <IconButton onClick={handleCall}>
+                    <IconButton
+                      onClick={async () => {
+                        await setFriendID(item.socket);
+                        callWithVideo(true);
+                      }}
+                    >
                       <Call />
                     </IconButton>
                   ) : (

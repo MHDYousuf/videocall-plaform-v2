@@ -51,7 +51,7 @@ const useStyles = makeStyles(() => ({
 ("use strict");
 
 // eslint-disable-next-line no-unused-vars
-const AppBarModule = (props) => {
+const AppBarModule = ({ clientId }) => {
   const classAppBar = useStyles();
   // const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -119,6 +119,7 @@ const AppBarModule = (props) => {
         userStatusFirestoreRef.set({
           email,
           displayName,
+          socket: null,
           ...isOfflineForFirestore,
         });
         return;
@@ -128,17 +129,20 @@ const AppBarModule = (props) => {
         .set({
           email,
           displayName,
+          socket: null,
           ...isOfflineForDatabase,
         })
         .then(() => {
           userStatusDatabaseRef.set({
             email,
             displayName,
+            socket: clientId,
             ...isOnlineForDatabase,
           });
           userStatusFirestoreRef.set({
             email,
             displayName,
+            socket: clientId,
             ...isOnlineForFirestore,
           });
         });
@@ -151,11 +155,13 @@ const AppBarModule = (props) => {
     userStatusDatabaseRef.set({
       email,
       displayName,
+      socket: null,
       ...isOfflineForDatabase,
     });
     userStatusFirestoreRef.set({
       email,
       displayName,
+      socket: null,
       ...isOfflineForFirestore,
     });
     app.auth().signOut();

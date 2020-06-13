@@ -93,9 +93,9 @@ class Profile extends Component {
     } = this.state;
     return (
       <div>
-        <AppBar />
+        <AppBar clientId={clientId} startCall={this.startCallHandler} />
         <MainWindow clientId={clientId} startCall={this.startCallHandler} />
-        <OnlineCard />
+        <OnlineCard clientId={clientId} />
         {!_.isEmpty(this.config) && (
           <CallWindow
             status={callWindow}

@@ -57,9 +57,18 @@ function OnlineCard() {
         top: "10%",
         maxWidth: "300px",
         height: "100%",
+        width: "235px",
       }}
     >
-      <Paper style={{ position: "inherit", bottom: 0, padding: 10 }}>
+      <Paper
+        style={{
+          position: "inherit",
+          bottom: 0,
+          padding: 10,
+          overflow: "scroll",
+          maxHeight: "350px",
+        }}
+      >
         {Object.values(users).map((item) => {
           if (email === item.email) {
             // eslint-disable-next-line no-useless-return

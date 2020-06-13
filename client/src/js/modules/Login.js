@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // import auth from "../../services/auth";
 import app from "../config/firestore";
 import { AuthContext } from "../services/auth";
+import * as firebase from "firebase/app";
 
 // eslint-disable-next-line no-unused-expressions
 ("use strict");
@@ -47,7 +48,10 @@ const Login = ({ history }) => {
 
   const { currentUser } = useContext(AuthContext);
 
-  const signInWithGoogle = () => {};
+  const signInWithGoogle = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
+  };
 
   if (currentUser) {
     return <Redirect to="/profile" />;

@@ -36,7 +36,7 @@ const configs = addBaseConfig({
   plugins: [
     new HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: "React VideoCall - Minh Son Nguyen",
+      title: "React VideoCall",
       filename: "index.html",
       template: "src/html/index.html",
     }),

@@ -105,12 +105,14 @@ class Profile extends Component {
             endCall={this.endCallHandler}
           />
         )}
-        <CallModal
-          status={callModal}
-          startCall={this.startCallHandler}
-          rejectCall={this.rejectCallHandler}
-          callFrom={callFrom}
-        />
+        {callFrom !== "" ? (
+          <CallModal
+            status={callModal}
+            startCall={this.startCallHandler}
+            rejectCall={this.rejectCallHandler}
+            callFrom={callFrom}
+          />
+        ) : null}
       </div>
     );
   }

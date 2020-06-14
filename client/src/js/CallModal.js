@@ -10,27 +10,29 @@ import firebase from "firebase";
 
 function CallModal({ status, callFrom, startCall, rejectCall }) {
   const [users, setUsers] = useState({});
-  // const [caller, setCaller] = useState("");
+  const [caller, setCaller] = useState("");
 
   useEffect(() => {
     let subscribe = true;
     if (subscribe) {
       const fetchUsers = firebase.database().ref("users");
 
-      fetchUsers.on("value", (snapshot) => {
+      fetchUsers.once("value", (snapshot) => {
         setUsers(snapshot.val());
       });
     }
 
-    // let caller = Object.values(users).filter(
-    //   (item) => item.socket === callFrom
-    // );
-
-    // setCaller(caller[0].displayName);
     return () => {
       subscribe = false;
     };
   }, []);
+  useEffect(() => {
+    if (Object.keys(users).length !== 0) {
+      console.log(users);
+      let cl = Object.values(users).filter((item) => item.socket === callFrom);
+      setCaller(cl[0].displayName);
+    }
+  }, [users]);
 
   // eslint-disable-next-line array-callback-return
   // eslint-disable-next-line no-lone-blocks
@@ -43,7 +45,7 @@ function CallModal({ status, callFrom, startCall, rejectCall }) {
   return (
     <div className={classnames("call-modal", status)}>
       <p>
-        <span className="caller">{`${callFrom} is calling`}</span>
+        <span className="caller">{`${caller} is calling`}</span>
       </p>
       <button
         type="button"

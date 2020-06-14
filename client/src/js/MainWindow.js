@@ -147,6 +147,7 @@ function OnlineCard({ startCall }) {
           } else {
             return (
               <div
+                key={item.socket}
                 style={{
                   display: "flex",
                   padding: 5,

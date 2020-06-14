@@ -10,9 +10,9 @@ import { withRouter, Redirect } from "react-router-dom";
 import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 // import auth from "../../services/auth";
+import * as firebase from "firebase/app";
 import app from "../config/firestore";
 import { AuthContext } from "../services/auth";
-import * as firebase from "firebase/app";
 
 // eslint-disable-next-line no-unused-expressions
 ("use strict");
@@ -49,6 +49,7 @@ const Login = ({ history }) => {
   const { currentUser } = useContext(AuthContext);
 
   const signInWithGoogle = () => {
+    // eslint-disable-next-line no-var
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider);
   };
@@ -140,6 +141,7 @@ const useStyles = makeStyles((theme) => ({
       margin: 5,
       marginRight: 10,
     },
+    color: "#000",
   },
   loginBtn: {
     padding: theme.spacing(1.5),

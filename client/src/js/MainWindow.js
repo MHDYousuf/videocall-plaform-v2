@@ -112,6 +112,7 @@ function OnlineCard({ startCall }) {
       });
     }
     return () => {
+      console.log("cleanUp Mainwindow");
       subscribe = false;
     };
   }, []);

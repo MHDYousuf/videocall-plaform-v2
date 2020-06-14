@@ -5,7 +5,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable quotes */
 import React, { useState } from "react";
-import { TextField, Button, Grid } from "@material-ui/core";
+import { TextField, Button, Grid, Typography } from "@material-ui/core";
 import firebase from "firebase";
 import { Redirect } from "react-router-dom";
 
@@ -36,8 +36,12 @@ function ForgotPassword() {
       direction="column"
       justify="center"
       alignItems="center"
-      style={{ minHeight: "inherit" }}
+      style={{ minHeight: "100vh" }}
     >
+      <Typography style={{ color: "#000", padding: 10 }} variant="h5">
+        Please Enter your Email and we will send the Reset Link for your
+        password
+      </Typography>
       <TextField
         value={email}
         onChange={(e) => setEmail(e.target.value)}

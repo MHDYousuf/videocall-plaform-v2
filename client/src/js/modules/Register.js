@@ -1,4 +1,9 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-console */
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-alert */
 /* eslint-disable no-use-before-define */
@@ -12,9 +17,9 @@ import React, { useCallback } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { Grid, Typography, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import * as firebase from "firebase/app";
 import app, { db } from "../config/firestore";
 
-import * as firebase from "firebase/app";
 // import auth from "../../services/auth";
 
 // eslint-disable-next-line no-unused-expressions
@@ -80,7 +85,7 @@ const Register = ({ history }) => {
       await firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function (result) {
+        .then((result) => {
           // This gives you a Google Access Token. You can use it to access the Google API.
           var token = result.credential.accessToken;
           // The signed-in user info.
@@ -150,7 +155,7 @@ const Register = ({ history }) => {
 
         {/* <div className={classRegister.error}>{error}</div> */}
       </form>
-      <Typography>
+      <Typography style={{ color: "#000" }}>
         Already have account? <Link to="/login">Login here</Link>
       </Typography>
     </Grid>
@@ -160,6 +165,7 @@ const Register = ({ history }) => {
 const useStyles = makeStyles((theme) => ({
   heading: {
     margin: theme.spacing(3),
+    color: "#000",
   },
   formContainer: {
     display: "flex",
@@ -167,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 300,
   },
   mainContainer: {
-    minHeight: "inherit",
+    minHeight: "100vh",
   },
   googleBtn: {
     display: "inherit",
@@ -185,6 +191,7 @@ const useStyles = makeStyles((theme) => ({
       margin: 5,
       marginRight: 10,
     },
+    color: "#000",
   },
   loginBtn: {
     padding: theme.spacing(1.5),

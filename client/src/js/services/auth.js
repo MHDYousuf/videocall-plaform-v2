@@ -31,6 +31,8 @@ export const AuthProvider = ({ children }) => {
           margin: "auto",
           textAlign: "center",
           minHeight: "100vh",
+          fontSize: 18,
+          color: "#000",
         }}
       >
         Loading.....

@@ -15,12 +15,9 @@ function CallModal({ status, callFrom, startCall, rejectCall }) {
   useEffect(() => {
     let subscribe = true;
     if (subscribe) {
-      // const getUsers = () => {
       const fetchUsers = firebase.database().ref("users");
 
-      fetchUsers.on("value", (snapshot) => {
-        console.log("snapshot", snapshot.val());
-        // return snapshot.val();
+      fetchUsers.once("value", (snapshot) => {
         setUsers(snapshot.val());
       });
     }
@@ -30,17 +27,12 @@ function CallModal({ status, callFrom, startCall, rejectCall }) {
     };
   }, []);
   useEffect(() => {
-    // const users = getUsers();
-    console.log("users", users);
     if (Object.keys(users).length !== 0) {
       console.log(users);
       let cl = Object.values(users).filter((item) => item.socket === callFrom);
-      console.log(cl, "call", users, callFrom);
-      if (typeof cl[0] !== "undefined") {
-        setCaller(cl[0].displayName);
-      }
+      setCaller(cl[0].displayName);
     }
-  }, [callFrom, users]);
+  }, [users]);
 
   // eslint-disable-next-line array-callback-return
   // eslint-disable-next-line no-lone-blocks

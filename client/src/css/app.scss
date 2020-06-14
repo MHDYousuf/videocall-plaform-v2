@@ -8,8 +8,8 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "shared/base";
 
 html {
-  background: url("./shared/image.png") center no-repeat fixed;
-  background-size: cover;
+  background: url("https://source.unsplash.com/2560x1440/?forest,mountain")
+    center no-repeat fixed;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

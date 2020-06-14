@@ -11,12 +11,12 @@ import socket from "./socket";
 const PC_CONFIG = {
   iceServers: [
     {
-      urls: "stun:stun.l.google.com:19302",
-    },
-    {
       urls: "turn:numb.viagenie.ca",
       credential: "Luffy123",
       username: "mohd4yousuf@gmail.com",
+    },
+    {
+      urls: "stun:stun.l.google.com:19302",
     },
     {
       urls: "turn:192.158.29.39:3478?transport=tcp",

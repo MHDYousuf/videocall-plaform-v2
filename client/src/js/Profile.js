@@ -11,7 +11,6 @@ import MainWindow from "./MainWindow";
 import CallWindow from "./CallWindow";
 import CallModal from "./CallModal";
 import AppBar from "./modules/AppBar";
-import OnlineCard from "./modules/OnlineCard";
 
 class Profile extends Component {
   constructor() {
@@ -95,7 +94,7 @@ class Profile extends Component {
       <div>
         <AppBar clientId={clientId} startCall={this.startCallHandler} />
         <MainWindow clientId={clientId} startCall={this.startCallHandler} />
-        <OnlineCard clientId={clientId} />
+        {/* <OnlineCard clientId={clientId} /> */}
         {!_.isEmpty(this.config) && (
           <CallWindow
             status={callWindow}

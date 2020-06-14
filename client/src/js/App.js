@@ -5,7 +5,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable quotes */
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./services/auth";
 import PrivateRoute from "./services/PrivateRoute";
 import Profile from "./Profile";

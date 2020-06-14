@@ -4,6 +4,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable quotes */
 const path = require("path");
+const { HotModuleReplacementPlugin } = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -13,6 +14,7 @@ const configs = addBaseConfig({
   mode: "production",
   output: {
     filename: "js/[name].min.js",
+    publicPath: "/dist/",
   },
   module: {
     rules: [
@@ -36,6 +38,7 @@ const configs = addBaseConfig({
     ],
   },
   plugins: [
+    new HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({ filename: "css/[name].min.css" }),
     new HtmlWebpackPlugin({
       title: "React VideoCall - Minh Son Nguyen",
@@ -50,6 +53,15 @@ const configs = addBaseConfig({
         terserOptions: { ecma: 6 },
       }),
     ],
+  },
+  devServer: {
+    compress: true,
+    historyApiFallback: true,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+    },
+    hot: true,
   },
 });
 

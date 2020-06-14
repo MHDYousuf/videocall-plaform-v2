@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-console */
 /* eslint-disable no-else-return */
 /* eslint-disable consistent-return */
@@ -159,6 +160,12 @@ function OnlineCard({ startCall }) {
                   />
                   <div style={{ display: "inherit", flexDirection: "column" }}>
                     <h5>{item.displayName}</h5>
+                    {item.state === "online" ? (
+                      <p style={{ fontSize: 8 }}>
+                        Caller ID: <br />
+                        {item.socket}
+                      </p>
+                    ) : null}
                     <pre>{item.state}</pre>
                   </div>
                 </div>

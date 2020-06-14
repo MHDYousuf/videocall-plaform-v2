@@ -3,11 +3,38 @@
 /* eslint-disable no-confusing-arrow */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable quotes */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import firebase from "firebase";
 
 function CallModal({ status, callFrom, startCall, rejectCall }) {
+  const [users, setUsers] = useState({});
+  // const [caller, setCaller] = useState("");
+
+  useEffect(() => {
+    let subscribe = true;
+    if (subscribe) {
+      const fetchUsers = firebase.database().ref("users");
+
+      fetchUsers.on("value", (snapshot) => {
+        setUsers(snapshot.val());
+      });
+    }
+
+    // let caller = Object.values(users).filter(
+    //   (item) => item.socket === callFrom
+    // );
+
+    // setCaller(caller[0].displayName);
+    return () => {
+      subscribe = false;
+    };
+  }, []);
+
+  // eslint-disable-next-line array-callback-return
+  // eslint-disable-next-line no-lone-blocks
+
   const acceptWithVideo = (video) => {
     const config = { audio: true, video };
     return () => startCall(false, callFrom, config);

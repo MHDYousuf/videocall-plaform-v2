@@ -11,9 +11,12 @@ import socket from "./socket";
 const PC_CONFIG = {
   iceServers: [
     {
-      urls: ["turn:13.250.13.83:3478?transport=udp"],
-      username: "YzYNCouZM1mhqhmseWk6",
-      credential: "YzYNCouZM1mhqhmseWk6",
+      urls: "stun:stun.l.google.com:19302",
+    },
+    {
+      url: "turn:numb.viagenie.ca",
+      credential: "muazkh",
+      username: "webrtc@live.com",
     },
   ],
 };

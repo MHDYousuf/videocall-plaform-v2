@@ -1,10 +1,10 @@
 # Video Calling Platform using ReactJS and Firebase
-***
+
 This Application allows you to create a Video Calling Web Application.
 *You may need to Provide your firebase Credentials to firestore.js to work properly.*
 
 ## How to Run
-***
+
 After cloning the repository, do the following steps:
 
 ### Development

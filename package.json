@@ -21,7 +21,7 @@
     "classnames": "2.2.6",
     "css-loader": "3.5.3",
     "expose-loader": "0.7.5",
-    "express": "4.17.1",
+    "express": "4.17.3",
     "file-loader": "6.0.0",
     "firebase": "^7.15.1",
     "font-awesome": "4.7.0",
